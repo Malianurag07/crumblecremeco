@@ -15,7 +15,10 @@ interface PhotoProps {
   pos?: string
 }
 
-export const photoUrl = (name: string, w = 900) => `/images/${name}-${w}.webp`
+/** site-relative path (for absolute SEO URLs, which are prefixed with SITE.url) */
+export const imgPath = (name: string, w = 900) => `/images/${name}-${w}.webp`
+/** URL the browser should load, honouring the deploy base path */
+export const photoUrl = (name: string, w = 900) => `${import.meta.env.BASE_URL.replace(/\/$/, '')}${imgPath(name, w)}`
 
 /** Responsive, lazily loaded photograph with intrinsic dimensions (no layout shift). */
 export default function Photo({ name, alt, sizes = '100vw', className = '', priority, pos }: PhotoProps) {

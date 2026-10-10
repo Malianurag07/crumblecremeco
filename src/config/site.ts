@@ -7,7 +7,7 @@ export const SITE = {
   name: 'Crumble Creme Co.',
   handle: 'crumblecremeco',
   tagline: 'A Little Crumble. A Lot of Love.',
-  url: 'https://crumblecremeco.com',
+  url: (import.meta.env.VITE_SITE_URL as string | undefined) ?? 'https://crumblecremeco.com',
   whatsappNumber: '91XXXXXXXXXX',
   email: 'hello@crumblecremeco.com',
   city: '', // e.g. 'Pune' — fill in for local SEO

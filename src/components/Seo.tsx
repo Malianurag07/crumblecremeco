@@ -1,6 +1,6 @@
 import { Head } from 'vite-react-ssg'
 import { SITE } from '../config/site'
-import { photoUrl } from './Photo'
+import { imgPath } from './Photo'
 
 interface SeoProps {
   title: string
@@ -19,7 +19,7 @@ export const abs = (path: string) => `${SITE.url}${path === '/' ? '' : path}`
 export default function Seo({ title, description, path, image = 'og', type = 'website', jsonLd, noindex }: SeoProps) {
   const full = title.includes('Crumble Creme') ? title : `${title} | ${SITE.name}`
   const url = path === '/' ? `${SITE.url}/` : abs(path)
-  const img = image === 'og' ? `${SITE.url}/og.jpg` : `${SITE.url}${photoUrl(image, 900)}`
+  const img = image === 'og' ? `${SITE.url}/og.jpg` : `${SITE.url}${imgPath(image, 900)}`
   const blocks = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : []
   return (
     <Head>
@@ -53,7 +53,7 @@ export const bakeryJsonLd = () => ({
   slogan: SITE.tagline,
   description:
     'A modern bakery making small-batch cookies, cakes, cupcakes and pies, baked fresh and ordered on WhatsApp.',
-  image: `${SITE.url}${photoUrl('cookie-bite', 900)}`,
+  image: `${SITE.url}${imgPath('cookie-bite', 900)}`,
   email: SITE.email,
   priceRange: '₹₹',
   servesCuisine: 'Bakery',

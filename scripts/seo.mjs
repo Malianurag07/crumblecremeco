@@ -3,7 +3,7 @@ import { readFile, writeFile } from 'node:fs/promises'
 
 const site = await readFile('src/config/site.ts', 'utf8')
 const products = await readFile('src/data/products.ts', 'utf8')
-const url = (site.match(/url:\s*'([^']+)'/) ?? [])[1] ?? 'https://crumblecremeco.com'
+const url = (process.env.VITE_SITE_URL ?? (site.match(/'(https:\/\/[^']+)'/) ?? [])[1] ?? 'https://crumblecremeco.com').replace(/\/$/, '')
 
 const productSlugs = [...products.matchAll(/^\s{4}slug: '([^']+)',\n\s{4}name:/gm)].map((m) => m[1])
 const categorySlugs = [...products.matchAll(/^\s{4}slug: '([^']+)',\n\s{4}title:/gm)].map((m) => m[1])

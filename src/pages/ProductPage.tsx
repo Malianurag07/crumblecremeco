@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import Seo, { abs, breadcrumbJsonLd } from '../components/Seo'
-import Photo, { photoUrl } from '../components/Photo'
+import Photo, { imgPath } from '../components/Photo'
 import ProductCard, { Label } from '../components/ProductCard'
 import Crumbie from '../components/Crumbie'
 import { useBag } from '../components/BagContext'
@@ -61,7 +61,7 @@ export default function ProductPage() {
             '@type': 'Product',
             name: product.name,
             description: product.description,
-            image: product.gallery.map((g) => `${SITE.url}${photoUrl(g, 900)}`),
+            image: product.gallery.map((g) => `${SITE.url}${imgPath(g, 900)}`),
             sku: product.slug,
             category: cat.title,
             brand: { '@type': 'Brand', name: SITE.name },

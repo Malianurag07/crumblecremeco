@@ -8,7 +8,7 @@ import { SwirlLines } from '../components/art'
 import { ChevronIcon } from '../components/Icons'
 import { NotFound } from '../components/Layout'
 import { ALL_CATEGORIES, PRODUCTS, categoryBySlug, fromPrice } from '../data/products'
-import { photoUrl } from '../components/Photo'
+import { imgPath } from '../components/Photo'
 import { SITE } from '../config/site'
 
 type Sort = 'featured' | 'low' | 'high' | 'az'
@@ -74,7 +74,7 @@ export default function Shop() {
                 position: i + 1,
                 url: abs(`/product/${p.slug}`),
                 name: p.name,
-                image: `${SITE.url}${photoUrl(p.image, 900)}`,
+                image: `${SITE.url}${imgPath(p.image, 900)}`,
               })),
             },
           },
